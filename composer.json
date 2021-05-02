@@ -1,0 +1,29 @@
+{
+    "name": "engazan/mrp-ks-laravel",
+    "description": "Laravel wrapper package for the MRP K/S API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Engazan",
+            "email": "Engazan.eu@icloud.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.3",
+        "ext-openssl": "*",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Engazan\\MrpKs\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Engazan\\MrpKs\\MrpKsServiceProvider"
+            ]
+        }
+    }
+}
