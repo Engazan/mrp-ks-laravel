@@ -1,8 +1,8 @@
-#MRP K/S - laravel
+# MRP K/S - laravel
 - PHP (8) Laravel wrapper for MRP K/S
 - client have to activate MRP K/S - https://faq.mrp.sk/e-shop-nastavenia/Ako-prepojit-MRP-K-S-s-internetovym-obchodom-538
 
-##FEATURES
+## FEATURES
 - encryption (aes-256-ctr)
 
 ### Config .env
@@ -16,7 +16,7 @@ MRP_KS_ENCRYPTION_KEY=
 - if ```MRP_KS_ENCRYPTION_KEY``` is provided all request are sent as __ENCRYPTED__, also response is is __DECRYPTED__ under hod
 - if you want change varriable names run ```php artisan vendor:publish``` look for ```Engazan\MrpKs\MrpKsServiceProvider``` then edit ```/config/mrp-ks.php```
 
-##USAGE
+## USAGE
 ```php
 use Engazan\MrpKs\MrpKs;
 use Engazan\MrpKs\MrpKsResponse;
