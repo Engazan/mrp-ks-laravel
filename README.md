@@ -8,6 +8,8 @@
 ## INSTALL
 ```composer require engazan/mrp-ks-laravel```
 
+run ```php artisan vendor:publish``` look for ```Engazan\MrpKs\MrpKsServiceProvider```
+
 ### Config .env
 ```dotenv
 MRP_KS_URI=192.168.0.166
@@ -17,7 +19,6 @@ MRP_KS_PASSWORD=MRPDBA
 MRP_KS_ENCRYPTION_KEY=
 ```
 - if ```MRP_KS_ENCRYPTION_KEY``` is provided all request are sent as __ENCRYPTED__, also response is is __DECRYPTED__ under hod
-- if you want change varriable names run ```php artisan vendor:publish``` look for ```Engazan\MrpKs\MrpKsServiceProvider``` then edit ```/config/mrp-ks.php```
 
 ## USAGE
 ```php
