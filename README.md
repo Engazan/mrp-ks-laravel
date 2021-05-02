@@ -18,7 +18,7 @@ MRP_KS_USERNAME=MRPDBA
 MRP_KS_PASSWORD=MRPDBA
 MRP_KS_ENCRYPTION_KEY=
 ```
-- if ```MRP_KS_ENCRYPTION_KEY``` is provided all request are sent as __ENCRYPTED__, also response is is __DECRYPTED__ under hod
+- if ```MRP_KS_ENCRYPTION_KEY``` is provided all request are sent as __ENCRYPTED__, also you need __DECRYPT__ response XML
 
 ## USAGE
 ```php
