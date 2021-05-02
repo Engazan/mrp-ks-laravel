@@ -1,9 +1,12 @@
 # MRP K/S - laravel
-- PHP (8) Laravel wrapper for MRP K/S
+- PHP (8) Laravel 8 wrapper for MRP K/S
 - client have to activate MRP K/S - https://faq.mrp.sk/e-shop-nastavenia/Ako-prepojit-MRP-K-S-s-internetovym-obchodom-538
 
 ## FEATURES
 - encryption (aes-256-ctr)
+
+## INSTALL
+```composer require engazan/mrp-ks-laravel```
 
 ### Config .env
 ```dotenv
