@@ -34,13 +34,21 @@ class MrpKs
         $this->filters = $filters;
         return $this;
     }
+    public function setData(string $xml): MrpKs
+    {
+        $this->data = $xml;
+        return $this;
+    }
 
     public function sendRequest(): JsonResponse
     {
         return MrpKsRequest::sendGetRequest($this->command, $this->filters);
     }
 
-
+    public function sendPostRequest(string $xmlData): JsonResponse
+    {
+        return MrpKsRequest::sendPostRequest($this->command, $xmlData);
+    }
 
     public static function EXPEO0(array $filter = []): JsonResponse
     {
