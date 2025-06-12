@@ -119,4 +119,39 @@ class MrpKsRequest
             );
         }
     }
+
+    public static function sendPostRequest(string $command, string $xmlData): JsonResponse
+    {
+        $client = self::getClient();
+
+        $requestBody = self::wrapEncryptedRequestData(
+            command: $command,
+            filters: [], // No filters for POST
+            dataXml: $xmlData // Raw XML payload
+        );
+
+        try {
+            $response = $client->post(
+                '',
+                [
+                    'headers' => [
+                        'Authorization' => 'Basic ' . MrpKsAuth::getBasicAuthToken(),
+                        'Content-Type' => 'application/xml',
+                    ],
+                    'body' => $requestBody,
+                ]
+            );
+
+            return response()->json([
+                'statusCode' => $response->getStatusCode(),
+                'data' => $response->getBody()->getContents(),
+            ]);
+        } catch (GuzzleException $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+
 }

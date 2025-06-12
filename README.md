@@ -53,3 +53,37 @@ if (config('mrp-ks.encryption')) {
 }
 
 ```
+
+
+## POST requests
+Some MRP-K/S endpoints require you to POST arbitrary XML payloads (e.g. invoice imports). Use the new sendPostRequest() helper:
+
+```php
+use Engazan\MrpKs\MrpKs;
+use Engazan\MrpKs\MrpKsResponse;
+
+// 1) Build your MRPKSData XML payload
+$xmlPayload = <<<'XML'
+<MRPKSData version="2.0" countryCode="SK" currencyCode="EUR">
+  <CustomBlock>
+    <Foo>Bar</Foo>
+  </CustomBlock>
+</MRPKSData>
+XML;
+
+// 2) Send it with a POST-only command (e.g. IMPFV0)
+$response = (new MrpKs())
+    ->setCommand('IMPFV0')
+    ->sendPostRequest($xmlPayload);
+
+// 3) Inspect HTTP status and raw envelope
+$status   = $response->original['statusCode'];  // e.g. 200
+$envelope = $response->original['data'];        // the <mrpEnvelope>…</mrpEnvelope> XML
+
+// 4) If encryption is enabled, decrypt + parse
+$plainXml = MrpKsResponse::decryptEncryptedResponse($envelope);
+$doc      = new \SimpleXMLElement($plainXml);
+
+
+
+```
