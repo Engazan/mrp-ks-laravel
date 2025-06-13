@@ -11,14 +11,14 @@ class MrpKsResponse
 {
     public static function decryptEncryptedResponse(string $responseXml): bool|string
     {
-        $simpleXmlResponse = new SimpleXMLElement($responseXml);
+        $simpleXmlResponse = new \SimpleXMLElement($responseXml);
 
         $encodingParams = base64_decode((string)$simpleXmlResponse->encodedBody->encodingParams);
         $encodedData = (string)$simpleXmlResponse->encodedBody->encodedData;
         $authCode = (string)$simpleXmlResponse->encodedBody->authCode;
 
 
-        $simpleXmlResponseEncodingParams = new SimpleXMLElement($encodingParams);
+        $simpleXmlResponseEncodingParams = new \SimpleXMLElement($encodingParams);
         $varKey = (string)$simpleXmlResponseEncodingParams->varKey;
 
         $authCredentials = MrpKsAuth::getEncryptedAuthData($varKey);
